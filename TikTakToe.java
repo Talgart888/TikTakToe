@@ -103,6 +103,40 @@ public class TikTakToe {
     }
 
     private static boolean isComputerWin(char[][] gameTable) {
+        /*
+        if (gameTable[0][0] == gameTable[0][1] && gameTable[0][0] == gameTable[0][2] && gameTable[0][0] == '0') {
+            return true;
+        }
+        if (gameTable[1][0] == gameTable[1][1] && gameTable[1][0] == gameTable[1][2] && gameTable[1][0] == '0') {
+            return true;
+        }
+        if (gameTable[2][0] == gameTable[2][1] && gameTable[2][0] == gameTable[2][2] && gameTable[2][0] == '0') {
+            return true;
+        }
+        */
+        // проверяем ячейки по строкам
+        for (int i = 0; i < 3; i++) {
+            {
+                if (gameTable[i][0] == gameTable[i][1] && gameTable[i][0] == gameTable[i][2] && gameTable[i][0] == '0') {
+                    return true;
+                }
+            }
+        }
+        // проверяем ячейки по столбцам
+        for (int i = 0; i < 3; i++) {
+            {
+                if (gameTable[0][i] == gameTable[1][i] && gameTable[0][i] == gameTable[2][i] && gameTable[0][i] == '0') {
+                    return true;
+                }
+            }
+        }
+        // проверяем ячейки по диоганали
+        if (gameTable[0][0] == gameTable[1][1] && gameTable[0][0] == gameTable[2][2] && gameTable[0][0] == '0') {
+            return true;
+        }
+        if (gameTable[0][2] == gameTable[1][1] && gameTable[0][2] == gameTable[2][0] && gameTable[0][2] == '0') {
+            return true;
+        }
         return false;
     }
 
