@@ -55,13 +55,12 @@ public class TikTakToe {
     }
 
     private static void printTableMapping() {
-        System.out.println("-------------");
-        System.out.println("| 7 | 8 | 9 |");
-        System.out.println("-------------");
-        System.out.println("| 4 | 5 | 6 |");
-        System.out.println("-------------");
-        System.out.println("| 1 | 2 | 3 |");
-        System.out.println("-------------");
+        char[][] mappingTable = {
+                {'7', '8', '9'},
+                {'4', '5', '6'},
+                {'1', '2', '3'}
+        };
+        printGameTable(mappingTable);
     }
     // текущее состояние игрового поля
     private static void printGameTable(char[][] gameTable) {
