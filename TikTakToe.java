@@ -47,4 +47,36 @@ public class TikTakToe {
         }
         System.out.println("Игра завершена.");
     }
+
+    private static void printTableMapping() {
+
+    }
+
+    private static void printGameTable() {
+
+    }
+
+    private static void makeComputerMove() {
+
+    }
+
+    private static void makeUserMove() {
+
+    }
+
+    private static void MakeComputerMove() {
+
+    }
+
+    private static boolean isUserWin() {
+        return false;
+    }
+
+    private static boolean isComputerWin() {
+        return false;
+    }
+
+    private static boolean isDraw() {
+        return false;
+    }
 }
