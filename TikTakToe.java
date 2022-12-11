@@ -63,14 +63,15 @@ public class TikTakToe {
         System.out.println("| 1 | 2 | 3 |");
         System.out.println("-------------");
     }
-
+    // текущее состояние игрового поля
     private static void printGameTable(char[][] gameTable) {
-        System.out.println("-------------");
-        System.out.println("| " + gameTable[0][0] + " | " + gameTable[0][1] + " | " + gameTable[0][2] + " |");
-        System.out.println("-------------");
-        System.out.println("| " + gameTable[1][0] + " | " + gameTable[1][1] + " | " + gameTable[1][2] + " |");
-        System.out.println("-------------");
-        System.out.println("| " + gameTable[2][0] + " | " + gameTable[2][1] + " | " + gameTable[2][2] + " |");
+        for (int i = 0; i < 3; i++) {
+            System.out.println("-------------");
+            for (int j = 0; j < 3; j++) {
+                System.out.print("| " + gameTable[i][j] + " ");
+            }
+            System.out.println("|");
+        }
         System.out.println("-------------");
     }
 
