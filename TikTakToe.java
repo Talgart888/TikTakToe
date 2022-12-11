@@ -7,40 +7,46 @@ public class TikTakToe {
         System.out.println("Используйте следующие комбинации, чтобы указать ячейку, используя числа от 1 до 9.");
         printTableMapping(); // вывод таблицу соответсвия
 
+        // создаем переменнную игрового поля
+        char[][] gameTable = {
+                {' ', ' ', ' '},
+                {' ', ' ', ' '},
+                {' ', ' ', ' '}
+        }
         /* определяем кто ходит первым: компьютер или пользователь через Random и через условия boolean,
            если true то ходит компьютер т.к. внутри заложен его функция, если false то условия закрывается и идем к while
            где ходит пользователь
         */
         if (new Random().nextBoolean()) {
-            makeComputerMove(); // компьютер делает ход
-            printGameTable(); // текущее состояние игрового поля
+            makeComputerMove(gameTable); // компьютер делает ход
+            printGameTable(gameTable); // текущее состояние игрового поля
         }
 
         // Если никто не выиграл, то игра продолжается через цикл while
         while (true) {
-            makeUserMove(); // пользователь делает ход
-            printGameTable(); // текущее состояние игрового поля
+            makeUserMove(gameTable); // пользователь делает ход
+            printGameTable(gameTable); // текущее состояние игрового поля
 
             // если пользователь выиграл:
-            if (isUserWin()) {
+            if (isUserWin(gameTable)) {
                 System.out.println("ВЫ ВЫИГРАЛИ!");
                 break;
             }
             // Если нечья:
-            if (isDraw()) {
+            if (isDraw(gameTable)) {
                 System.out.println("Извините, ничья.");
                 break;
             }
-            MakeComputerMove(); // компьютер делает ход
-            printGameTable(); // текущее состояние игрового поля
+            MakeComputerMove(gameTable); // компьютер делает ход
+            printGameTable(gameTable); // текущее состояние игрового поля
 
             // если компьютер выиграл
-            if (isComputerWin()) {
+            if (isComputerWin(gameTable)) {
                 System.out.println("Компьютер выиграл(");
                 break;
             }
             // Если нечья:
-            if (isDraw()) {
+            if (isDraw(gameTable)) {
                 System.out.println("Извините, ничья.");
                 break;
             }
@@ -58,31 +64,31 @@ public class TikTakToe {
         System.out.println("-------------");
     }
 
-    private static void printGameTable() {
+    private static void printGameTable(char[][] gameTable) {
 
     }
 
-    private static void makeComputerMove() {
+    private static void makeComputerMove(char[][] gameTable) {
 
     }
 
-    private static void makeUserMove() {
+    private static void makeUserMove(char[][] gameTable) {
 
     }
 
-    private static void MakeComputerMove() {
+    private static void MakeComputerMove(char[][] gameTable) {
 
     }
 
-    private static boolean isUserWin() {
+    private static boolean isUserWin(char[][] gameTable) {
         return false;
     }
 
-    private static boolean isComputerWin() {
+    private static boolean isComputerWin(char[][] gameTable) {
         return false;
     }
 
-    private static boolean isDraw() {
+    private static boolean isDraw(char[][] gameTable) {
         return false;
     }
 }
