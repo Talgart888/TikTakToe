@@ -1,6 +1,7 @@
 package JavaCore.TikTakToe;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class TikTakToe {
     public static void main(String[] args) {
@@ -80,7 +81,40 @@ public class TikTakToe {
     }
 
     private static void makeUserMove(char[][] gameTable) {
+        while (true) {
+            System.out.println("Используйте следующие комбинации, чтобы указать ячейку, используя числа от 1 до 9.");
+            String string = new Scanner(System.in).nextLine();
+            if (string.length() == 1) {
+                char digit = string.charAt(0);
+                if (digit >= '1' && digit <= '9') {
+                    if (makeUserMoveToCell(gameTable, digit)) {
+                        return;
+                    }
+                }
+            }
+        }
+    }
 
+    private static boolean makeUserMoveToCell(char[][] gameTable, char digit) {
+        char[][] mappingTable = {
+                {'7', '8', '9'},
+                {'4', '5', '6'},
+                {'1', '2', '3'}
+        };
+        for (int i = 0; i < mappingTable.length; i++) {
+            for (int j = 0; j < mappingTable[i].length; j++) {
+                if (mappingTable[i][j] == digit) {
+                    if (gameTable[i][j] == ' ') {
+                        gameTable[i][j] = 'X';
+                        return true;
+                    } else {
+                        System.out.println("Невозможно сделать ход т.к. ячейка занята");
+                        return false;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     // компьютер делает ход, заполняет пустые ячейки printGameTable ноликом '0'
