@@ -2,7 +2,6 @@ package JavaCore.TikTakToe;
 
 import java.util.Random;
 import java.util.Scanner;
-
 public class TikTakToe {
     public static void main(String[] args) {
         System.out.println("Используйте следующие комбинации, чтобы указать ячейку, используя числа от 1 до 9.");
@@ -55,6 +54,20 @@ public class TikTakToe {
         System.out.println("Игра завершена.");
     }
 
+    private static void makeComputerMove(char[][] gameTable) {
+        Random random = new Random();
+        // через while компьютер будет заполнять пустые ячейки до тех пор пока не будет полностью заполнена
+        while (true) {
+            int row = random.nextInt(3); // bound 3 - возвращает случайное число в строку от 0 до 2
+            int col = random.nextInt(3); // bound 3 - возвращает случайное число в столбцу от 0 до 2
+            // если игровое поле по индексу row, col пуста, то в эту ячейку записываем 0
+            if (gameTable[row][col] == ' ') {
+                gameTable[row][col] = '0';
+                return;
+            }
+        }
+    }
+
     private static void printTableMapping() {
         char[][] mappingTable = {
                 {'7', '8', '9'},
@@ -76,9 +89,7 @@ public class TikTakToe {
         System.out.println("-------------");
     }
 
-    private static void makeComputerMove(char[][] gameTable) {
 
-    }
 
     private static void makeUserMove(char[][] gameTable) {
         while (true) {
@@ -133,25 +144,16 @@ public class TikTakToe {
     }
 
     private static boolean isUserWin(char[][] gameTable) {
-        return false;
+        return isWinner(gameTable, 'X');
     }
 
     private static boolean isComputerWin(char[][] gameTable) {
-        /*
-        if (gameTable[0][0] == gameTable[0][1] && gameTable[0][0] == gameTable[0][2] && gameTable[0][0] == '0') {
-            return true;
-        }
-        if (gameTable[1][0] == gameTable[1][1] && gameTable[1][0] == gameTable[1][2] && gameTable[1][0] == '0') {
-            return true;
-        }
-        if (gameTable[2][0] == gameTable[2][1] && gameTable[2][0] == gameTable[2][2] && gameTable[2][0] == '0') {
-            return true;
-        }
-        */
-        // проверяем ячейки по строкам
+        return isWinner(gameTable, '0');
+    }
+    private static boolean isWinner(char[][] gameTable, char ch) {
         for (int i = 0; i < 3; i++) {
             {
-                if (gameTable[i][0] == gameTable[i][1] && gameTable[i][0] == gameTable[i][2] && gameTable[i][0] == '0') {
+                if (gameTable[i][0] == gameTable[i][1] && gameTable[i][0] == gameTable[i][2] && gameTable[i][0] == ch) {
                     return true;
                 }
             }
@@ -159,16 +161,16 @@ public class TikTakToe {
         // проверяем ячейки по столбцам
         for (int i = 0; i < 3; i++) {
             {
-                if (gameTable[0][i] == gameTable[1][i] && gameTable[0][i] == gameTable[2][i] && gameTable[0][i] == '0') {
+                if (gameTable[0][i] == gameTable[1][i] && gameTable[0][i] == gameTable[2][i] && gameTable[0][i] == ch) {
                     return true;
                 }
             }
         }
         // проверяем ячейки по диоганали
-        if (gameTable[0][0] == gameTable[1][1] && gameTable[0][0] == gameTable[2][2] && gameTable[0][0] == '0') {
+        if (gameTable[0][0] == gameTable[1][1] && gameTable[0][0] == gameTable[2][2] && gameTable[0][0] == ch) {
             return true;
         }
-        if (gameTable[0][2] == gameTable[1][1] && gameTable[0][2] == gameTable[2][0] && gameTable[0][2] == '0') {
+        if (gameTable[0][2] == gameTable[1][1] && gameTable[0][2] == gameTable[2][0] && gameTable[0][2] == ch) {
             return true;
         }
         return false;
