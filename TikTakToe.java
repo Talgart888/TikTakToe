@@ -2,6 +2,7 @@ package JavaCore.TikTakToe;
 
 import java.util.Random;
 import java.util.Scanner;
+
 public class TikTakToe {
     public static void main(String[] args) {
         System.out.println("Используйте следующие комбинации, чтобы указать ячейку, используя числа от 1 до 9.");
@@ -90,7 +91,6 @@ public class TikTakToe {
     }
 
 
-
     private static void makeUserMove(char[][] gameTable) {
         while (true) {
             System.out.println("Используйте следующие комбинации, чтобы указать ячейку, используя числа от 1 до 9.");
@@ -150,6 +150,7 @@ public class TikTakToe {
     private static boolean isComputerWin(char[][] gameTable) {
         return isWinner(gameTable, '0');
     }
+
     private static boolean isWinner(char[][] gameTable, char ch) {
         for (int i = 0; i < 3; i++) {
             {
@@ -177,6 +178,13 @@ public class TikTakToe {
     }
 
     private static boolean isDraw(char[][] gameTable) {
-        return false;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (gameTable[i][j] == ' ') {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
